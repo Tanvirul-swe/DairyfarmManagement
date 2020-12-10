@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DairyfarmManagement</string>
+    <string-array name="breed_name">
+        <item>Holstein Friesian</item>
+        <item>Friesian</item>
+        <item>Jersey</item>
+        <item>Sahiwal</item>
+        <item>Mundi</item>
+        <item>Gir</item>
+        <item>Read Sindhi</item>
+
+    </string-array>
+</resources>

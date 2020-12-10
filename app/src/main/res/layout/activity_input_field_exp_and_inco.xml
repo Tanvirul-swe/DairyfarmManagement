@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="4"
+    tools:context=".Input_field_exp_and_inco">
+
+
+
+    <LinearLayout
+        android:background="@drawable/edit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/radioGroup">
+
+                <RadioButton
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/expense_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Expense"
+                    android:background="#A68D7E"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:background="#CC99FF"
+                    android:id="@+id/income_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Income"
+
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/date_of_income_or_expenseEdittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Date" />
+
+            <ImageView
+                android:id="@+id/date_of_income_or_expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/calendar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="0.35"
+        android:layout_margin="10dp"
+        android:layout_height="0dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="#000000"
+            android:text="&#2547;"
+            />
+        <EditText
+            android:background="@drawable/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount_of_tk"
+            android:hint="Amount in TK"
+            />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/edit"
+
+        android:layout_height="0dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:id="@+id/catagory_of_tk"
+            android:hint="Enter an Expenses or income category name"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:id="@+id/noteId"
+            android:hint="Note"
+            />
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="0dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/save_button"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:backgroundTint="#D68E8E"
+            android:background="@drawable/circlebackground"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+

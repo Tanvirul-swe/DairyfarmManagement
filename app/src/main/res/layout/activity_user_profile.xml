@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:background="#00FFFFFF"
+    android:weightSum="4"
+    tools:context=".User_profile">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:layout_height="0dp">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_weight="1"
+           android:orientation="horizontal"
+           android:layout_height="0dp">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/profileicon"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Dairy Owner : "
+               android:textColor="#B3B30000"
+               />
+
+           <TextView
+               android:id="@+id/userid"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#B3B30000"
+               />
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_height="0dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/idicon"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dairy id : "
+                android:textColor="#B3B30000"
+                android:id="@+id/dairyId"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_height="0dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of cattle : "
+                android:textColor="#B3B30000"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/number_of_cowsid"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#0000FF"
+            android:orientation="horizontal"
+            android:layout_height="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Condition Summery"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_weight="1.10"
+    android:layout_height="0dp"
+    android:layout_width="match_parent"
+    android:background="#00FFFFFF"
+    android:clipToPadding="false"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:clickable="true"
+        android:id="@+id/sick_cardview"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF0000"
+            >
+     <ImageView
+         android:layout_width="64dp"
+         android:layout_height="64dp"
+           android:padding="10dp"
+           android:src="@drawable/sickicon"
+
+
+         />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Sick"
+               android:textColor="#fff"
+               />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="3dp"
+                android:background="#100F0F"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:clickable="true"
+        android:id="@+id/pregnant_carview"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="#3E8800"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:padding="10dp"
+                android:src="@drawable/pregnant"
+               android:background="@drawable/background_green"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pregnant"
+                android:textColor="#fff"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="3dp"
+                android:background="#100F0F"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:clickable="true"
+        android:id="@+id/milkingcardview"
+
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="#FFA200"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:padding="10dp"
+                android:src="@drawable/milking"
+                android:background="#75B1A9"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Milking"
+                android:textColor="#fff"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="3dp"
+                android:background="#100F0F"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:clickable="true"
+        android:id="@+id/dry_cardview"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+         android:background="#57BDC2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:padding="10dp"
+                android:src="@drawable/nomilked"
+                android:background="#75B1A9"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dry"
+                android:textColor="#fff"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="3dp"
+                android:background="#100F0F"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.22"
+        android:layout_width="match_parent"
+     android:background="#03A9F4"
+        android:layout_height="0dp">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Number of cows"
+            android:textColor="#fff"
+            android:textSize="20sp"
+
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_weight="1.10"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+
+        android:clipToPadding="false"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="#C56F60"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:padding="10dp"
+                    android:src="@drawable/babycow"
+                    android:background="#75B1A9"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calves"
+                    android:textColor="#fff"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="3dp"
+                    android:background="#100F0F"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+           android:background="#C16352"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:padding="10dp"
+                    android:src="@drawable/cowbulls"
+                    android:background="#75B1A9"
+
+                    />
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bulls"
+                    android:textColor="#fff"
+                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="3dp"
+                    android:background="#100F0F"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+               android:background="#AC8781"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:padding="10dp"
+                    android:src="@drawable/cowbreed"
+                    android:background="#75B1A9"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cows"
+                    android:textColor="#fff"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="3dp"
+                    android:background="#100F0F"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+               android:background="#673AB7"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:padding="10dp"
+                    android:src="@drawable/cattleicon"
+                    android:background="#75B1A9"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weaners"
+                    android:textColor="#fff"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="3dp"
+                    android:background="#100F0F"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+
+        android:layout_weight="0.5"
+        android:layout_height="0dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/botton_nev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-5dp"
+            android:background="#80FFFFFF"
+            app:itemTextColor="@color/colorPrimary"
+
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menuitem" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
