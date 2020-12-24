@@ -11,8 +11,9 @@
   <ImageView
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:id="@+id/cow_pic_id"
       android:src="@drawable/cowimage"
-
+       android:layout_marginRight="10dp"
       />
 
 

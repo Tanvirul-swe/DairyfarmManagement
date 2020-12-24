@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -16,11 +19,13 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
     private Activity context;
     private List<cowdata> cowdataList;
 
+
     public CustomAdapter( Activity context, List<cowdata> cowdataList) {
         super(context,R.layout.sample_view, cowdataList);
         this.context = context;
         this.cowdataList = cowdataList;
     }
+
 
     @NonNull
     @Override
@@ -33,11 +38,16 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
         TextView t2 = view.findViewById(R.id.Breed_textview);
         TextView t3 = view.findViewById(R.id.gender_textview);
 
+
         t1.setText("Tag : "+cowdata1.getTag());
         t2.setText("Breed : "+cowdata1.getBreed());
         t3.setText("Gender : "+cowdata1.getGender());
+        String link = cowdata1.getImagelink();
+
+
 
         return view;
     }
+
 }
 

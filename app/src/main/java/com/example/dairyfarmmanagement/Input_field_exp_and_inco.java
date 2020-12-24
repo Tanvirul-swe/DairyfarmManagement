@@ -8,13 +8,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.protobuf.Empty;
+
+import es.dmoral.toasty.Toasty;
 
 public class Input_field_exp_and_inco extends AppCompatActivity implements View.OnClickListener {
          private ImageView date;
@@ -25,12 +30,17 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
          public RadioButton radioButton1;
          public RadioGroup radioGroup1;
          public String value1;
+
+         private ProgressBar progressBar;
          DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_field_exp_and_inco);
+        getSupportActionBar().setTitle("Back");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Transaction_data");
 
         date = (ImageView) findViewById(R.id.date_of_income_or_expense);
@@ -40,8 +50,10 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
         Note = (EditText) findViewById(R.id.noteId);
         save = (Button) findViewById(R.id.save_button);
         radioGroup1 = (RadioGroup) findViewById(R.id.radioGroup);
+        progressBar = (ProgressBar)findViewById(R.id.input_progressbar_id);
         save.setOnClickListener(this);
         date.setOnClickListener(this);
+        progressBar.setVisibility(View.GONE);
     }
 
 
@@ -51,6 +63,8 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
            case R.id.save_button:
                save_data();
                Intent intent = new Intent(Input_field_exp_and_inco.this,Incomes_Expenses.class);
+               progressBar.setVisibility(View.VISIBLE);
+
                startActivity(intent);
 
 
@@ -88,7 +102,7 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
         value1 = radioButton1.getText().toString().trim();
         String compare_value =new String("Income");
 
-        String tk=Amount.getText().toString().trim();
+         String tk = Amount.getText().toString().trim();
         String category = Category.getText().toString().trim();
         String note = Note.getText().toString().trim();
         String date_value = editText_date.getText().toString().trim();
@@ -100,6 +114,7 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
 
             databaseReference.child("Income").child(key2).setValue(transection_data_halader);
 
+
         }
         else
         {
@@ -107,7 +122,7 @@ public class Input_field_exp_and_inco extends AppCompatActivity implements View.
             databaseReference.child("Expense").child(key2).setValue(transection_data_halader);
         }
 
-        
+        Toasty.success(getApplicationContext(),"Successful", Toast.LENGTH_LONG,true).show();
 
     }
 

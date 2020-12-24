@@ -22,10 +22,11 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
 
      private CardView sikc_Cardview;
      private TextView username,dairyid;
-     DatabaseReference databaseReference;
+     DatabaseReference databaseReference,databaseReference1;
      public String value,id;
      private TextView number_fo_cows;
-     public int count_number_of_cow;
+      public int count=0;
+      public int c;
 
      public BottomNavigationView nav_bottom,notification,milkreport,budget;
     @Override
@@ -33,6 +34,7 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
          databaseReference = FirebaseDatabase.getInstance().getReference("User_information");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("Cow_list");
         nav_bottom = (BottomNavigationView) findViewById(R.id.botton_nev);
 
 
@@ -71,6 +73,7 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
+
     @Override
     protected void onStart() {
 
@@ -84,12 +87,12 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
                       demo demo1 = dataSnapshot1.getValue(demo.class);
 
                      value = demo1.getName().toString();
-                     id = demo1.getPhone();
+
 
 
                 }
+
                 username.setText(value);
-                dairyid.setText(id);
 
             }
 
@@ -99,8 +102,38 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
 
             }
         });
+     // Add_cows add_cows = new Add_cows();
+     //   c = add_cows.check;
+
+        if(c==0)
+        {
+            databaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot snap : snapshot.getChildren())
+                    {
+                        count++;
+                    }
+
+                    String temp = Integer.toString(count);
+                    number_fo_cows.setText(temp);
+
+                   c++;
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
+
+
         super.onStart();
     }
+
+
 
 
 }

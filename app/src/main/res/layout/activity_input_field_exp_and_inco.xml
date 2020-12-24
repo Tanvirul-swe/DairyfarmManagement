@@ -12,7 +12,7 @@
 
 
     <LinearLayout
-        android:background="@drawable/edit"
+        android:background="@drawable/trangection"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -72,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:hint="Date" />
 
             <ImageView
@@ -103,6 +104,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/amount_of_tk"
             android:hint="Amount in TK"
+            android:inputType="number"
             />
 
 
@@ -140,7 +142,15 @@
         android:padding="10dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:orientation="vertical"
         android:layout_height="0dp">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:id="@+id/input_progressbar_id"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

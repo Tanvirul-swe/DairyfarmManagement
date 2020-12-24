@@ -3,7 +3,7 @@ package com.example.dairyfarmmanagement;
 public class cowdata {
 
     private String tag,birth_date,start_dairy_date,breed,gender;
-    private String imageUrl;
+    private String imagelink;
     private int number_of_cows;
 
 
@@ -11,14 +11,15 @@ public class cowdata {
 
     }
 
-    public cowdata(String tag, String birth_date, String start_dairy_date,String breed,String gender,String imageUrl,int number_of_cows) {
+    public cowdata(String tag, String birth_date, String start_dairy_date,String breed,String gender,String imagelink,int number_of_cows ){
         this.tag = tag;
         this.birth_date = birth_date;
         this.start_dairy_date = start_dairy_date;
         this.breed = breed;
         this.gender = gender;
-        this.imageUrl=imageUrl;
-        this.number_of_cows=number_of_cows;
+        this.imagelink=imagelink;
+        this.number_of_cows = number_of_cows;
+
     }
 
     public String getTag() {
@@ -61,12 +62,12 @@ public class cowdata {
         this.gender = gender;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImagelink() {
+        return imagelink;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImagelink(String imagelink) {
+        this.imagelink = imagelink;
     }
 
     public int getNumber_of_cows() {

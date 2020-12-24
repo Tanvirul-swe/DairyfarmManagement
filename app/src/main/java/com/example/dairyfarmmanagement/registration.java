@@ -24,15 +24,16 @@ public class registration extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private TextView show_user_name;
     private ProgressBar progressBar;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference3;
        private EditText user_name,user_email,farm_name,user_password,confirm_password,phone_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        this.setTitle("Registration activity");
+        getSupportActionBar().setTitle("Back");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
        mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("User_information");
+        databaseReference3 = FirebaseDatabase.getInstance().getReference("User_information");
         nextButton = (Button) findViewById(R.id.UserRegNextButtonId);
         user_name = (EditText) findViewById(R.id.UserNameEditTextId);
         user_email = (EditText) findViewById(R.id.UserEmailEditTExtId);
@@ -144,11 +145,11 @@ mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new O
 
         String phone = phone_number.getText().toString().trim();
 
-        String key1 = databaseReference.push().getKey();
+        String key1 = databaseReference3.push().getKey();
 
 
         user_data_handle user_data_handle1 = new user_data_handle(name,farm,email,password,phone);
-        databaseReference.child(key1).setValue(user_data_handle1);
+        databaseReference3.child(key1).setValue(user_data_handle1);
 
 
     }

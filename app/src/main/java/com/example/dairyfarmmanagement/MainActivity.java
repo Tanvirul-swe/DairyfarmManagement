@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private Button loginButton;
   private TextView textView1 ,textView2,demo;
   private ProgressBar progressBar;
-  int count = 0;
   DatabaseReference databaseReference;
 
     @Override

@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -26,12 +27,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import es.dmoral.toasty.Toasty;
 
 public class Add_cows extends AppCompatActivity implements View.OnClickListener {
     private Spinner spinner;
@@ -40,7 +46,7 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
     private ImageView imageView1, imageView2;
     private DatePickerDialog datePicker;
     private EditText editText1, editText2,eartag;
-    private ProgressBar progressBar;
+    private ProgressBar progressBar1;
      private Button save_buttom;
      private ListView listView;
      public RadioGroup radioGroup;
@@ -48,11 +54,11 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
      public String value;
      private ImageView chooseImage;
      private Uri imageUri;
-     public String imagelink;
+     private String imagelink;
      private static final int Image_request = 1;
-     public int count_number_of_cows=0;
-
-     DatabaseReference databaseReference;
+     public int count_number_of_cows;
+      public int check=0;
+     DatabaseReference databaseReference,databaseReference1;
      StorageReference storageReference;
 
     @Override
@@ -60,6 +66,7 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cows);
         databaseReference = FirebaseDatabase.getInstance().getReference("Cow_list");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("Cow_list");
         storageReference = FirebaseStorage.getInstance().getReference("Cow_image");
 
         breed_name = getResources().getStringArray(R.array.breed_name);
@@ -67,7 +74,7 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
         editText1 = (EditText) findViewById(R.id.setcalendar1);
         editText2 = (EditText) findViewById(R.id.setcalendar2);
         imageView2 = (ImageView) findViewById(R.id.calendar2);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        progressBar1 = (ProgressBar) findViewById(R.id.progressbarid);
       listView = (ListView) findViewById(R.id.listviewId);
       eartag = (EditText) findViewById(R.id.eartagid);
       chooseImage = (ImageView) findViewById(R.id.add_imageid);
@@ -81,9 +88,9 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
         imageView1.setOnClickListener(this);
         save_buttom = (Button) findViewById(R.id.saveId);
         imageView2.setOnClickListener(this);
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
         save_buttom.setOnClickListener(this);
         chooseImage.setOnClickListener(this);
+        progressBar1.setVisibility(View.GONE);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -149,6 +156,7 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
             case R.id.saveId:
                 save_data();
                 Intent intent = new Intent(Add_cows.this,List_of_cows.class);
+                progressBar1.setVisibility(View.VISIBLE);
                 startActivity(intent);
                 break;
             case R.id.add_imageid:
@@ -170,7 +178,7 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
         intent5.setType("image/*");
         intent5.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent5,Image_request);
-        Toast.makeText(getApplicationContext(),"File chooser open",Toast.LENGTH_LONG).show();
+        Toasty.info(getApplicationContext(),"Select a image",Toast.LENGTH_LONG,true).show();
 
 
     }
@@ -202,7 +210,10 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
         radioButton = findViewById(radioId);
         value = radioButton.getText().toString();
 
-        StorageReference ref = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(imageUri));
+
+
+
+        final StorageReference ref = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(imageUri));
 
 
         ref.putFile(imageUri)
@@ -210,16 +221,24 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                       upload upload1 = new upload(taskSnapshot.getStorage().getDownloadUrl().toString());
-                       String key9 = databaseReference.push().getKey();
-                       databaseReference.child(key9).setValue(upload1);
+                        String tag = eartag.getText().toString().trim();
+                        String Birth_date = editText1.getText().toString().trim();
+                        String start_dairy = editText2.getText().toString().trim();
+                        imagelink = taskSnapshot.getStorage().getDownloadUrl().toString();
+                        count_number_of_cows = count_number_of_cows+1;
 
-
+                        String key = databaseReference.push().getKey();
+                        cowdata cowdata1 = new cowdata(tag,Birth_date,start_dairy,breed,value,imagelink,count_number_of_cows);
+                        databaseReference.child(key).setValue(cowdata1);
+                        User_profile user_profile = new User_profile();
+                        user_profile.c=0;
+                        Toasty.success(getApplicationContext(),"Successful",Toast.LENGTH_LONG,true).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
+
                         // Handle unsuccessful uploads
                         // ...
                     }
@@ -227,16 +246,11 @@ public class Add_cows extends AppCompatActivity implements View.OnClickListener 
 
 
 
-           String tag = eartag.getText().toString().trim();
-         String Birth_date = editText1.getText().toString().trim();
-         String start_dairy = editText2.getText().toString().trim();
-          count_number_of_cows++;
 
 
-        String key = databaseReference.push().getKey();
-         cowdata cowdata1 = new cowdata(tag,Birth_date,start_dairy,breed,value,imagelink,count_number_of_cows);
 
-         databaseReference.child(key).setValue(cowdata1);
     }
+
+
 }
 

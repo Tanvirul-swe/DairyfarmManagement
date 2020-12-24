@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,14 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Input_field_exp_and_inco"></activity>
-        <activity android:name=".Incomes_Expenses" />
-        <activity android:name=".List_of_cows" />
-        <activity android:name=".Add_cows" />
+        <activity android:name=".Input_field_exp_and_inco"
+            android:parentActivityName=".Incomes_Expenses"
+            ></activity>
+        <activity android:name=".Incomes_Expenses"
+            android:parentActivityName=".User_profile"
+            />
+        <activity android:name=".List_of_cows"
+            android:parentActivityName=".User_profile"
+            />
+        <activity android:name=".Add_cows"
+            android:parentActivityName=".List_of_cows"
+            />
         <activity android:name=".User_profile" />
         <activity android:name=".Forgot_password" />
         <activity android:name=".Verify_registration" />
-        <activity android:name=".registration" />
+        <activity android:name=".registration"
+            android:parentActivityName=".MainActivity"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

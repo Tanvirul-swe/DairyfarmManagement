@@ -145,7 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:id="@+id/progressbar"
+        android:id="@+id/progressbarid"
         />
     <LinearLayout
         android:layout_marginTop="10sp"
@@ -164,5 +164,6 @@
             />
 
     </LinearLayout>
+
 </LinearLayout>
 </ScrollView>

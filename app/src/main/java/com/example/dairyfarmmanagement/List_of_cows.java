@@ -22,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class List_of_cows extends AppCompatActivity {
       private FloatingActionButton floatingActionButton;
       ArrayAdapter arrayAdapter;
@@ -35,7 +37,8 @@ public class List_of_cows extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_cows);
-        setTitle("Cow List");
+        getSupportActionBar().setTitle("Cows List");
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Cow_list");
           cowdataList = new ArrayList<>();
@@ -50,7 +53,7 @@ public class List_of_cows extends AppCompatActivity {
      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
          @Override
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-             Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_LONG).show();
+             Toasty.success(getApplicationContext(),"Clicked",Toast.LENGTH_LONG,true).show();
 
 
          }
@@ -98,6 +101,7 @@ public class List_of_cows extends AppCompatActivity {
                     cowdataList.add(cowdata2);
                 }
                 listView.setAdapter(customAdapter);
+
             }
 
 

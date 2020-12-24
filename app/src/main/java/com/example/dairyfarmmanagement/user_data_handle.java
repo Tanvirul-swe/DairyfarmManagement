@@ -3,6 +3,11 @@ package com.example.dairyfarmmanagement;
 public class user_data_handle {
     private String name,farm,email,password,phone;
 
+
+public user_data_handle()
+{
+
+}
     public user_data_handle(String name, String farm, String email, String password,String phone) {
         this.name = name;
         this.farm = farm;

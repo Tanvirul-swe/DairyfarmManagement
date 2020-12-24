@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:weightSum="2"
+
+    >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plusesing"
+            />
+        <TextView
+
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note"
+            android:textSize="15sp"
+            android:id="@+id/noteId"
+            android:textColor="#262B2E"
+            />
+
+
+    </LinearLayout>
+       <LinearLayout
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:orientation="vertical"
+           android:layout_height="match_parent">
+           <TextView
+               android:layout_gravity="center_vertical"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Date"
+               android:id="@+id/transection_dateId"
+               android:textSize="15sp"
+
+               />
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Tk"
+                 android:textColor="#262B2E"
+                 android:layout_gravity="center_vertical"
+                 android:textSize="20sp"
+                 android:id="@+id/transection_tkid"
+                 />
+
+       </LinearLayout>
+
+</LinearLayout>

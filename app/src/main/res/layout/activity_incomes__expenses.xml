@@ -1,42 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".Incomes_Expenses">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_weight="9"
-        android:layout_height="0dp">
 
-        <ListView
-            android:layout_width="match_parent"
+    <LinearLayout
+       android:layout_marginLeft="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+
+        android:weightSum="3"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_height="match_parent">
 
-        </ListView>
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    >
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addtkId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:clickable="true"
-        android:src="@drawable/pluse"
-        app:fabSize="normal"
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/income"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/incomeID"
+                android:text="500TK"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#536DFE"
+                />
 
-        />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/wallet"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500TK"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/cashId"
+                android:textColor="#536DFE"
+                />
+
+
 </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/expenses"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500TK"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/expenseId"
+                android:textColor="#536DFE"
+                />
 
 
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="7.5"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+           <ListView
+               android:id="@+id/income_listviewID"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:dividerHeight="5dp"
+
+               />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+
+        android:layout_height="0dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addtkId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/pluse"
+            app:fabSize="normal"
+
+            />
+    </LinearLayout>
 
 </LinearLayout>

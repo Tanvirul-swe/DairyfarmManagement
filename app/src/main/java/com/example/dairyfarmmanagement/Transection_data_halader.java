@@ -1,8 +1,14 @@
 package com.example.dairyfarmmanagement;
 
 public class Transection_data_halader {
-    private String category,note,date,tk;
+    private String category,note,date;
+    private String tk;
 
+
+    public Transection_data_halader(){
+
+
+    }
 
     public Transection_data_halader(String category, String note, String date, String tk) {
         this.category = category;
