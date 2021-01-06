@@ -46,6 +46,7 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
         TextView t1 = view.findViewById(R.id.tag_textview);
         TextView t2 = view.findViewById(R.id.Breed_textview);
         TextView t3 = view.findViewById(R.id.gender_textview);
+        ImageView t4 = view.findViewById(R.id.cow_pic_id);
 
 
         t1.setText("Tag : "+cowdata1.getTag());
@@ -56,6 +57,7 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
 
         return view;
     }
+
 
 
 

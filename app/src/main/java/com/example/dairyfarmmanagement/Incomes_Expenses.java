@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +28,8 @@ public class Incomes_Expenses extends AppCompatActivity {
       private Transection_Custom_Adapter adapter;
       private ListView listView1;
       private TextView income_amount,expense_textview,Cash_Textview;
-      public int i,sum=0,sum1=0,i1,a,b;
-      public String temp1,temp;
+      public int i,sum=0,sum1=0,i1,a=0,b=0;
+    private String temp1,temp,copy_income_sum,copy_expenses_sum;
       DatabaseReference databaseReference1,databaseReference2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +92,14 @@ public class Incomes_Expenses extends AppCompatActivity {
 
               }
                 temp = Integer.toString(sum);
-               income_amount.setText(temp);
+                copy_income_sum = temp;
+
+               income_amount.setText(temp+" \u09F3");
+
               listView1.setAdapter(adapter);
-               a = Integer.parseInt(temp.replaceAll("[\\D]",""));
+
           }
+
 
           @Override
           public void onCancelled(@NonNull DatabaseError error) {
@@ -114,9 +119,15 @@ public class Incomes_Expenses extends AppCompatActivity {
                   sum1=sum1+i1;
               }
                temp1 = Integer.toString(sum1);
-              expense_textview.setText(temp1);
+              copy_expenses_sum=temp1;
+              expense_textview.setText(temp1+" \u09F3");
+              a = Integer.parseInt(copy_income_sum.replaceAll("[\\D]",""));
+              b = Integer.parseInt(copy_expenses_sum.replaceAll("[\\D]",""));
+              int cash = a-b;
+              Cash_Textview.setText(Integer.toString(cash)+" \u09F3");
+
               listView1.setAdapter(adapter);
-               b = Integer.parseInt(temp1.replaceAll("[\\D]",""));
+
 
           }
 
@@ -126,17 +137,22 @@ public class Incomes_Expenses extends AppCompatActivity {
           }
 
 
+
       });
 
 
-
-
-        int cash = b-a;
+/*
+       a = Integer.parseInt(copy_income_sum.replaceAll("[\\D]",""));
+       b = Integer.parseInt(copy_expenses_sum.replaceAll("[\\D]",""));
+        int cash = a-b;
         String temp3 = Integer.toString(cash);
         Cash_Textview.setText(temp3);
 
+ */
+
         super.onStart();
     }
+
 
 
 }
