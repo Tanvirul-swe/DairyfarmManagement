@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dairyfarmmanagement">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,24 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Input_field_exp_and_inco"
-            android:parentActivityName=".Incomes_Expenses"
-            ></activity>
-        <activity android:name=".Incomes_Expenses"
-            android:parentActivityName=".User_profile"
-            />
-        <activity android:name=".List_of_cows"
-            android:parentActivityName=".User_profile"
-            />
-        <activity android:name=".Add_cows"
-            android:parentActivityName=".List_of_cows"
-            />
+        <activity
+            android:name=".List_of_milk_report"
+            android:parentActivityName=".User_profile" />
+        <activity
+            android:name=".Milk_report"
+            android:parentActivityName=".List_of_milk_report" />
+        <activity
+            android:name=".Input_field_exp_and_inco"
+            android:parentActivityName=".Incomes_Expenses" />
+        <activity
+            android:name=".Incomes_Expenses"
+            android:parentActivityName=".User_profile" />
+        <activity
+            android:name=".List_of_cows"
+            android:parentActivityName=".User_profile" />
+        <activity
+            android:name=".Add_cows"
+            android:parentActivityName=".List_of_cows" />
         <activity android:name=".User_profile" />
         <activity android:name=".Forgot_password" />
         <activity android:name=".Verify_registration" />
-        <activity android:name=".registration"
-            android:parentActivityName=".MainActivity"
-            />
+        <activity
+            android:name=".registration"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

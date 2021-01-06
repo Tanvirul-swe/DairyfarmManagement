@@ -28,6 +28,7 @@
                android:src="@drawable/profileicon"
                />
            <TextView
+               android:layout_marginTop="5dp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="Dairy Owner : "
@@ -35,6 +36,7 @@
                />
 
            <TextView
+               android:layout_marginTop="5dp"
                android:id="@+id/userid"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -53,13 +55,14 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/idicon"
                 />
+
             <TextView
+                android:id="@+id/dairyId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="Dairy id : "
-                android:textColor="#B3B30000"
-                android:id="@+id/dairyId"
-                />
+                android:textColor="#B3B30000" />
 
         </LinearLayout>
         <LinearLayout
@@ -76,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:id="@+id/number_of_cowsid"
                 />
 

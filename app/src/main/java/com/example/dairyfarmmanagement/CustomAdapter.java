@@ -1,6 +1,7 @@
 package com.example.dairyfarmmanagement;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -18,6 +22,8 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
 
     private Activity context;
     private List<cowdata> cowdataList;
+    private  ImageView imageView;
+
 
 
     public CustomAdapter( Activity context, List<cowdata> cowdataList) {
@@ -25,6 +31,9 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
         this.context = context;
         this.cowdataList = cowdataList;
     }
+
+
+
 
 
     @NonNull
@@ -42,12 +51,14 @@ public class CustomAdapter extends ArrayAdapter<cowdata> {
         t1.setText("Tag : "+cowdata1.getTag());
         t2.setText("Breed : "+cowdata1.getBreed());
         t3.setText("Gender : "+cowdata1.getGender());
-        String link = cowdata1.getImagelink();
 
 
 
         return view;
     }
+
+
+
 
 }
 

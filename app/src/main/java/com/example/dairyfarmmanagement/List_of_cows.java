@@ -99,8 +99,11 @@ public class List_of_cows extends AppCompatActivity {
                 {
                     cowdata cowdata2 = dataSnapshot1.getValue(cowdata.class);
                     cowdataList.add(cowdata2);
+                    Toasty.info(getApplicationContext(),""+cowdata2.getImagelink().toString(),Toast.LENGTH_LONG,true).show();
+
                 }
                 listView.setAdapter(customAdapter);
+
 
             }
 

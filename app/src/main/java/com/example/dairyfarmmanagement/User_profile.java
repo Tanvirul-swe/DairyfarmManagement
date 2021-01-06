@@ -2,8 +2,11 @@ package com.example.dairyfarmmanagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import es.dmoral.toasty.Toasty;
+
 public class User_profile extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
      private CardView sikc_Cardview;
@@ -29,6 +34,8 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
       public int c;
 
      public BottomNavigationView nav_bottom,notification,milkreport,budget;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +75,10 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
                 Intent intent1 = new Intent(User_profile.this,Incomes_Expenses.class);
                 startActivity(intent1);
                  break;
+            case R.id.milk_report:
+                Intent intent2 = new Intent(User_profile.this,List_of_milk_report.class);
+                startActivity(intent2);
+                break;
 
         }
         return false;
@@ -87,12 +98,13 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
                       demo demo1 = dataSnapshot1.getValue(demo.class);
 
                      value = demo1.getName().toString();
-
+                      id = demo1.getPhone().toString();
 
 
                 }
 
                 username.setText(value);
+                dairyid.setText(id);
 
             }
 
@@ -131,6 +143,27 @@ public class User_profile extends AppCompatActivity implements BottomNavigationV
 
 
         super.onStart();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId()==R.id.logoutid)
+        {
+            Intent intent3 = new Intent(User_profile.this,MainActivity.class);
+            Toasty.success(getApplicationContext(),"Log out successfully",Toast.LENGTH_LONG,true).show();
+            startActivity(intent3);
+        }
+        else{
+            return super.onOptionsItemSelected(item);
+        }
+
+        return true;
     }
 
 

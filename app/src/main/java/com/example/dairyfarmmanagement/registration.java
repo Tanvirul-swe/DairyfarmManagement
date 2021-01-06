@@ -2,37 +2,47 @@ package com.example.dairyfarmmanagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import es.dmoral.toasty.Toasty;
+import io.perfmark.Tag;
+
 public class registration extends AppCompatActivity implements View.OnClickListener {
-       private Button nextButton;
-    private FirebaseAuth mAuth;
+    private Button nextButton;
+    private FirebaseAuth mAuth1;
     private TextView show_user_name;
     private ProgressBar progressBar;
     DatabaseReference databaseReference3;
-       private EditText user_name,user_email,farm_name,user_password,confirm_password,phone_number;
+    private EditText user_name, user_email, farm_name, user_password, confirm_password, phone_number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         getSupportActionBar().setTitle("Back");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       mAuth = FirebaseAuth.getInstance();
+        mAuth1 = FirebaseAuth.getInstance();
         databaseReference3 = FirebaseDatabase.getInstance().getReference("User_information");
         nextButton = (Button) findViewById(R.id.UserRegNextButtonId);
         user_name = (EditText) findViewById(R.id.UserNameEditTextId);
@@ -47,92 +57,17 @@ public class registration extends AppCompatActivity implements View.OnClickListe
         show_user_name = (TextView) findViewById(R.id.userid);
 
 
-
     }
 
     @Override
     public void onClick(View v) {
-
-        userResister();
-
-    }
-
-    private void userResister() {
-        String name = user_name.getText().toString().trim();
-        String farm = farm_name.getText().toString().trim();
-
-        String email = user_email.getText().toString().trim();
-
-        String password = user_password.getText().toString().trim();
-
-        String confrompass = confirm_password.getText().toString().trim();
-        String phone = phone_number.getText().toString().trim();
-
-
-        if (email.isEmpty())
-        {
-
-            user_email.setError("Enter an email address");
-            user_email.requestFocus();
-
-            return;
-        }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-        {
-            user_email.setError("Enter a valid email address");
-
-            user_email.requestFocus();
-
-            return;
-        }
-        if (password.isEmpty())
-        {
-
-            user_password.setError("Enter a password");
-
-            user_password.requestFocus();
-            return;
-        }
-        if (password.length()<7)
-        {
-
-            user_password.setError("Minimum length of a password should be 7");
-
-            user_password.requestFocus();
-            return;
-        }
-        if (name.isEmpty())
-        {
-
-            user_name.setError("Enter a name");
-
-            user_name.requestFocus();
-            return;
-        }
-        if (phone.isEmpty())
-        {
-
-            phone_number.setError("Enter an phone number");
-
-            phone_number.requestFocus();
-            return;
-        }
-
-mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-    @Override
-    public void onComplete(@NonNull Task<AuthResult> task) {
-
-        if (task.isSuccessful()) {
-
-            Save_user_data();
-            Intent intent = new Intent(registration.this,MainActivity.class);
-            startActivity(intent);
-
-        } else {
-
-        }
+        progressBar.setVisibility(View.VISIBLE);
+        Save_user_data();
+        Intent intent = new Intent(registration.this, MainActivity.class);
+        startActivity(intent);
 
     }
+
 
     private void Save_user_data() {
 
@@ -148,12 +83,10 @@ mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new O
         String key1 = databaseReference3.push().getKey();
 
 
-        user_data_handle user_data_handle1 = new user_data_handle(name,farm,email,password,phone);
+        user_data_handle user_data_handle1 = new user_data_handle(name, farm, email, password, phone);
         databaseReference3.child(key1).setValue(user_data_handle1);
 
 
     }
-});
-    }
-
 }
+

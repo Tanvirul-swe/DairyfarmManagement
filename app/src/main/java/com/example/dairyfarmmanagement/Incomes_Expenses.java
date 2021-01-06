@@ -27,7 +27,7 @@ public class Incomes_Expenses extends AppCompatActivity {
       private Transection_Custom_Adapter adapter;
       private ListView listView1;
       private TextView income_amount,expense_textview,Cash_Textview;
-      public int i,sum=0,sum1=0,i1;
+      public int i,sum=0,sum1=0,i1,a,b;
       public String temp1,temp;
       DatabaseReference databaseReference1,databaseReference2;
     @Override
@@ -93,6 +93,7 @@ public class Incomes_Expenses extends AppCompatActivity {
                 temp = Integer.toString(sum);
                income_amount.setText(temp);
               listView1.setAdapter(adapter);
+               a = Integer.parseInt(temp.replaceAll("[\\D]",""));
           }
 
           @Override
@@ -115,6 +116,7 @@ public class Incomes_Expenses extends AppCompatActivity {
                temp1 = Integer.toString(sum1);
               expense_textview.setText(temp1);
               listView1.setAdapter(adapter);
+               b = Integer.parseInt(temp1.replaceAll("[\\D]",""));
 
           }
 
@@ -125,13 +127,14 @@ public class Incomes_Expenses extends AppCompatActivity {
 
 
       });
-      /*
-        int a = Integer.parseInt(temp.replaceAll("[\\D]",""));
-        int b = Integer.parseInt(temp1.replaceAll("[\\D]",""));
+
+
+
+
         int cash = b-a;
         String temp3 = Integer.toString(cash);
         Cash_Textview.setText(temp3);
-       */
+
         super.onStart();
     }
 
